@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farbeen's Day!</title>
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-image: url('Image7.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+
+    .center {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .envelope {
+      position: relative;
+      width: 200px;
+      height: 130px;
+      margin: 50px auto;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 130px;
+      background: #ffcad4;
+      clip-path: polygon(0 0, 100% 0, 50% 50%);
+      z-index: 2;
+      transition: transform 1s ease;
+      transform-origin: top;
+    }
+
+    .letter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 210px;
+      background: white;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 1s ease;
+      padding: 15px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .letter p {
+      font-size: 0.9rem;
+    }
+
+    .opened .flap {
+      transform: rotateX(-180deg);
+    }
+
+    .opened .letter {
+      opacity: 1;
+    }
+
+    .fade-slider {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 3rem auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.fade-slider img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  border-radius: 15px;
+}
+
+.fade-slider img.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+
+    
+
+    
+    h1 {
+      color: #d63384;
+      font-size: 2.5rem;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="center">
+    <h1 class="floating">🎂 Happy Birthday, Farbae Baby! 🎉</h1>
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+      <div class="letter">
+        <p>To the favourite out there! 💖</p>
+        <p>Wishing you the happiest birthday ever! You light up every room you walk into and deserve all the love and admiration today! 🎁🎈</p>
+        <p>Love you to bits!  💌</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slider fade-slider" id="slider">
+  <img class="fade-slide active" src="Image1.jpg" alt="Memory 1">
+  <img class="fade-slide" src="Image2.jpg" alt="Memory 2">
+  <img class="fade-slide" src="Image3.jpg" alt="Memory 3">
+  <img class="fade-slide" src="Image4.jpg" alt="Memory 3">
+  <img class="fade-slide" src="Image 5.jpg" alt="Memory 3">
+  <img class="fade-slide" src="Image6.jpg" alt="Memory 3">
+</div>
+
+  </div>
+
+  <script>
+   document.getElementById('envelope').addEventListener('click', function () {
+      this.classList.toggle('opened');
+    });
+
+
+
+
+  const fadeSlides = document.querySelectorAll('.fade-slide');
+  let fadeIndex = 0;
+
+  function showNextFade() {
+    fadeSlides[fadeIndex].classList.remove('active');
+    fadeIndex = (fadeIndex + 1) % fadeSlides.length;
+    fadeSlides[fadeIndex].classList.add('active');
+  }
+
+  setInterval(showNextFade, 3000);
+</script>
+
+
+ 
+
+
+
+</body>
+</html>
